@@ -1,0 +1,12 @@
+.link {
+  cursor: pointer;
+  border-radius: 2px;
+  text-decoration: underline dotted transparent;
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration-color: currentColor;
+  }
+}
