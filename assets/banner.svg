@@ -1,19 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <title>Prom King: your own Prometheus dashboards in Lens</title>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1b2a3a"/>
-      <stop offset="1" stop-color="#23415f"/>
+    <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141a2b"/>
+      <stop offset="1" stop-color="#231a36"/>
+    </linearGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2b632" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#f2b632" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <rect width="800" height="400" fill="url(#bg)"/>
-  <g transform="translate(170 60)">
-    <rect x="0" y="0" width="210" height="120" rx="10" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.15"/>
-    <path d="M18 96 L55 70 L88 80 L125 44 L160 56 L192 28" fill="none" stroke="#3d90ce" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M18 104 L55 94 L88 98 L125 84 L160 90 L192 78" fill="none" stroke="#48b155" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="250" y="0" width="210" height="120" rx="10" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.15"/>
-    <path d="M268 90 L300 60 L330 72 L362 36 L396 50 L442 22" fill="none" stroke="#e58b1e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-    <rect x="0" y="140" width="460" height="80" rx="10" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.15"/>
-    <path d="M18 200 L80 180 L140 190 L200 160 L260 172 L320 150 L380 162 L442 146" fill="none" stroke="#b05ee0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect width="1200" height="600" fill="url(#ground)"/>
+
+  <!-- A metric's history across the whole banner, behind everything, kept below the words and tiles. -->
+  <path d="M0 540 L80 528 L160 534 L240 512 L320 522 L400 530 L480 544 L560 532 L640 548 L720 534 L800 542 L880 518 L960 530 L1040 502 L1120 514 L1200 492 V600 H0 Z" fill="url(#area)"/>
+  <path d="M0 540 L80 528 L160 534 L240 512 L320 522 L400 530 L480 544 L560 532 L640 548 L720 534 L800 542 L880 518 L960 530 L1040 502 L1120 514 L1200 492" fill="none" stroke="#f2b632" stroke-opacity="0.5" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- The crown, as in the icon, kept well inside the edges since the banner is cropped to fit. -->
+  <g transform="translate(245 290) scale(4.2) translate(-32 -32)" stroke="#4a3208" stroke-width="3" stroke-linejoin="round">
+    <path d="M8 46 V21 L17 32 L24 15 L32 26 L40 9 L47 25 L56 17 V46 Z" fill="#f2b632"/>
+    <rect x="6" y="44" width="52" height="10" rx="3" fill="#cf8a10"/>
+    <circle cx="24" cy="15" r="3.5" fill="#7fb2ff"/>
+    <circle cx="40" cy="9" r="4" fill="#7fb2ff"/>
+    <circle cx="56" cy="17" r="3.5" fill="#7fb2ff"/>
   </g>
-  <text x="400" y="328" text-anchor="middle" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Prom King</text>
+
+  <g font-family="Inter, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" fill="#ffffff">
+    <text x="440" y="200" font-size="96" font-weight="800" letter-spacing="-2">Prom King</text>
+    <text x="444" y="252" font-size="32" fill="#d9dbe6" fill-opacity="0.9">Your own Prometheus dashboards in Lens</text>
+  </g>
+
+  <!-- A dashboard's worth of panels, the kinds the extension draws: a gauge, stacked areas, bars and a donut. -->
+  <g transform="translate(444 284)" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif">
+    <!-- Gauge -->
+    <g>
+      <rect width="150" height="140" rx="12" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="14" y="26" font-size="15" fill="#d9dbe6" fill-opacity="0.8">Cluster CPU</text>
+      <path d="M36.9 112 A44 44 0 1 1 113.1 112" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="12" stroke-linecap="round"/>
+      <path d="M36.9 112 A44 44 0 0 1 110 63.4" fill="none" stroke="#f2b632" stroke-width="12" stroke-linecap="round"/>
+      <text x="75" y="104" font-size="26" font-weight="800" fill="#ffffff" text-anchor="middle">72%</text>
+    </g>
+
+    <!-- Stacked areas -->
+    <g transform="translate(172 0)">
+      <rect width="150" height="140" rx="12" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="14" y="26" font-size="15" fill="#d9dbe6" fill-opacity="0.8">Namespaces</text>
+      <path d="M14 124 V96 L40 90 L66 94 L92 80 L118 84 L136 74 V124 Z" fill="#4f8ff7" fill-opacity="0.45"/>
+      <path d="M14 96 L40 90 L66 94 L92 80 L118 84 L136 74" fill="none" stroke="#4f8ff7" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M14 96 V76 L40 66 L66 72 L92 54 L118 60 L136 46 V74 L118 84 L92 80 L66 94 L40 90 Z" fill="#26a69a" fill-opacity="0.45"/>
+      <path d="M14 76 L40 66 L66 72 L92 54 L118 60 L136 46" fill="none" stroke="#26a69a" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M14 76 V60 L40 52 L66 56 L92 42 L118 44 L136 36 V46 L118 60 L92 54 L66 72 L40 66 Z" fill="#f2b632" fill-opacity="0.45"/>
+      <path d="M14 60 L40 52 L66 56 L92 42 L118 44 L136 36" fill="none" stroke="#f2b632" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+
+    <!-- Bar gauge -->
+    <g transform="translate(344 0)">
+      <rect width="150" height="140" rx="12" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="14" y="26" font-size="15" fill="#d9dbe6" fill-opacity="0.8">Top pods</text>
+      <g>
+        <rect x="14" y="44" width="122" height="12" rx="4" fill="#ffffff" fill-opacity="0.1"/>
+        <rect x="14" y="44" width="112" height="12" rx="4" fill="#e5533d"/>
+        <rect x="14" y="66" width="122" height="12" rx="4" fill="#ffffff" fill-opacity="0.1"/>
+        <rect x="14" y="66" width="86" height="12" rx="4" fill="#f2b632"/>
+        <rect x="14" y="88" width="122" height="12" rx="4" fill="#ffffff" fill-opacity="0.1"/>
+        <rect x="14" y="88" width="58" height="12" rx="4" fill="#48b155"/>
+        <rect x="14" y="110" width="122" height="12" rx="4" fill="#ffffff" fill-opacity="0.1"/>
+        <rect x="14" y="110" width="34" height="12" rx="4" fill="#48b155"/>
+      </g>
+    </g>
+
+    <!-- Donut -->
+    <g transform="translate(516 0)">
+      <rect width="150" height="140" rx="12" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.14"/>
+      <text x="14" y="26" font-size="15" fill="#d9dbe6" fill-opacity="0.8">Pods by phase</text>
+      <g transform="rotate(-90 75 84)" fill="none" stroke-width="16">
+        <circle cx="75" cy="84" r="36" stroke="#4f8ff7" stroke-dasharray="100 126.2"/>
+        <circle cx="75" cy="84" r="36" stroke="#9b6bff" stroke-dasharray="64 162.2" stroke-dashoffset="-102"/>
+        <circle cx="75" cy="84" r="36" stroke="#f2b632" stroke-dasharray="56 170.2" stroke-dashoffset="-168"/>
+      </g>
+      <text x="75" y="91" font-size="20" font-weight="800" fill="#ffffff" text-anchor="middle">19</text>
+    </g>
+  </g>
+
+  <!-- What else it does, in one line under the panels. -->
+  <text x="444" y="462" font-family="Inter, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="21" fill="#d9dbe6" fill-opacity="0.85">Tabs or windows · mirrored across clusters · click to open pods</text>
 </svg>
